@@ -1,0 +1,811 @@
+Days:
+  TUESDAY: Dinsdag
+  MONDAY: Maandag
+  FRIDAY: Vrijdag
+  WEDNESDAY: Woensdag
+  SUNDAY: Zondag
+  THURSDAY: Donderdag
+  SATURDAY: Zaterdag
+TradeType:
+  BUY: Kopen
+  SELL: Verkopen
+PriceType:
+  PLAYER_AMOUNT: Speler aantal
+  FLOAT: Float
+  FLAT: Flat
+  DYNAMIC: Dynamic
+ProductType:
+  ITEM: Item
+  EMPTY: Leeg
+  COMMAND: Command
+Shop:
+  Product:
+    Error:
+      InvalidCartUI: '[sound="minecraft:entity.villager.no;0.8;1.0"]<soft_red>Kon aankoopmenu niet openen: Winkelwagen UI niet gevonden.</soft_red>'
+      Unbuyable: '[sound="minecraft:entity.villager.no;0.8;1.0"]<soft_red><b>Sorry! </b></soft_red><gray>Dit product kan momenteel niet worden gekocht!</gray>'
+      Unsellable: '[sound="minecraft:entity.villager.no;0.8;1.0"]<soft_red><b>Sorry! </b></soft_red><gray>Dit product kan momenteel niet worden verkocht!</gray>'
+      OutOfStock: '[sound="minecraft:entity.villager.no;0.8;1.0"]<soft_red><b>Sorry! </b></soft_red><gray>Dit product is niet op voorraad!</gray>'
+      OutOfSpace: '[sound="minecraft:entity.villager.no;0.8;1.0"]<soft_red><b>Sorry! </b></soft_red><gray>De winkel heeft geen ruimte meer!</gray>'
+      OutOfFunds: '[sound="minecraft:entity.villager.no;0.8;1.0"]<soft_red><b>Sorry! </b></soft_red><gray>De winkel heeft geen geld meer!</gray>'
+      FullStock: '[sound="minecraft:entity.villager.no;0.8;1.0"]<soft_red><b>Sorry! </b></soft_red><gray>Dit product is vol voorraad!</gray>'
+      FullInventory: '[sound="minecraft:entity.villager.no;0.8;1.0"]<soft_red><b>Sorry! </b></soft_red><gray>Je moet je inventory opruimen voordat je kunt kopen!</gray>'
+      TooExpensive:
+      - '[type="title",sound="minecraft:block.anvil.place;0.8;1.0",title_times="20:60:20"]'
+      - <soft_red><b>Te duur!</b></soft_red>
+      - <gray>Je hebt <soft_red>%price%</soft_red> nodig!</gray>
+      NotEnoughItems:
+      - '[type="title",sound="minecraft:block.anvil.place;0.8;1.0",title_times="20:60:20"]'
+      - <soft_red><b>Niet genoeg Items!</b></soft_red>
+      - <gray>Je hebt <soft_red>x%amount% %item%</soft_red> nodig!</gray>
+  Cart:
+    CustomAmount: <gray>Vul het aantal in...</gray>
+Other:
+  PriceDisabled: N/A
+  NoRent: < Niet gehuurd >
+  Undefined: <soft_gray>« <u>Onbekend</u> »</soft_gray>
+Editor:
+  Price:
+    Float:
+      NoDays: Geen dagen ingesteld. Prijs wordt niet correct ververst.
+      NoTimes: Geen tijden ingesteld. Prijs wordt niet correct ververst.
+  Generic:
+    BrokenItem:
+      Name: <soft_red>< Onbekend Item > </soft_red>
+      Lore:
+      - <gray>Item tag/ID is onbekend.</gray>
+    Enter:
+      Name: <gray>Vul in <green>[Name]</green></gray>
+      Amount: <gray>Vul in <green>[Amount]</green></gray>
+      Value: <gray>Vul in <green>[Value]</green></gray>
+      Day: <gray>Vul in <green>[Day Name]</green></gray>
+      Time: <gray>Vul in <green>[Time]</green> like <green>22:00</green></gray>
+      Seconds: <gray>Vul in <green>[Seconds Amount]</green></gray>
+  Product:
+    Enter:
+      Price: <gray>Vul in <green>[Price]</green></gray>
+      UniPrice: <gray>Vul in <green>[Min] [Max]</green></gray>
+      Currency: <gray>Vul in <green>[Currency Identifier]</green></gray>
+  Title:
+    Shop:
+      List: <black>Virtual Shop Editor</black>
+      Settings: <black>Shop Settings</black>
+      Layouts: <black>Shop Layouts</black>
+      Rotations: <black>Shop Rotations</black>
+      Rotation:
+        Options: <black>Rotation Options</black>
+        Times: <black>Rotation Times</black>
+        Items: <black>Rotation Items</black>
+        ItemSelection: <black>Select Product...</black>
+        SlotSelection: <black>Select Slot(s)...</black>
+    Product:
+      Creation: <black>Product Creation</black>
+      Settings: <black>Product Options</black>
+      Stocks: <black>Product Stock Options</black>
+      Price: <black>Product Price Options</black>
+    Products:
+      Normal: <black>Shop Products (Normal)</black>
+      Rotating: <black>Shop Products (Rotating)</black>
+Auction:
+  SortType:
+    NEWEST: Nieuwste
+    NAME: Naam
+    MATERIAL: Materiaal
+    OLDEST: Oudste
+    LEAST_EXPENSIVE: Goedkoopste
+    SELLER: Verkoper
+    MOST_EXPENSIVE: Duurste
+  Command:
+    Argument:
+      Name:
+        Price: prijs
+    Open:
+      Desc: Open veiling.
+    Sell:
+      Desc: Voeg item toe aan veiling.
+      Error:
+        NoItem: <soft_red>Je moet een item in je hand hebben om dat te doen!</soft_red>
+    Expired:
+      Desc: Lijst van verlopen aanbiedingen.
+    History:
+      Desc: Je verkoopgeschiedenis.
+    Selling:
+      Desc: Lijst van je huidige aanbiedingen.
+    Unclaimed:
+      Desc: Lijst van onopgeëiste beloningen voor je aanbiedingen.
+  Listing:
+    Add:
+      Success:
+        Info:
+        - '[sound="minecraft:block.note_block.bell;0.8;1.0"]'
+        - ' '
+        - <soft_green><b>✔ Success!</b></soft_green>
+        - ' '
+        - <gray>Je hebt <soft_green>x%listing_item_amount% %listing_item_name%</soft_green> op de veiling gezet voor <soft_green>%listing_price%</soft_green>!</gray>
+        - '<gray>Belastingbedrag: <soft_red>%tax%</soft_red></gray>'
+        - ' '
+        Broadcast:
+        - '[prefix="false"]'
+        - ' '
+        - <soft_yellow><b>Veiling:</b></soft_yellow>
+        - <gray><soft_yellow>%player_display_name%</soft_yellow> heeft <soft_yellow>x%listing_item_amount%</soft_yellow> <hover:show_item:"%listing_item_value%"><soft_yellow>%listing_item_name%</soft_yellow></hover> op de veiling gezet voor <soft_yellow>%listing_price%</soft_yellow>.</gray>
+        - ' '
+      Error:
+        BadItem: '[sound="minecraft:entity.villager.no;0.8;1.0"]<gray><soft_red>✘ %item%</soft_red> Kan niet toegevoegd worden aan de veiling!</gray>'
+        Limit: '[sound="minecraft:entity.villager.no;0.8;1.0"]<gray><soft_red>✘</soft_red> Je kunt niet meer dan <soft_red>%amount%</soft_red> actieve items op de veiling hebben!</gray>'
+        Price:
+          Tax: '[sound="minecraft:entity.villager.no;0.8;1.0"]<gray><soft_red>✘</soft_red> Je kunt de <soft_red>%tax%</soft_red> prijsbelasting niet betalen: <soft_red>%amount%</soft_red>!</gray>'
+          Currency:
+            Min: '[sound="minecraft:entity.villager.no;0.8;1.0"]<gray><soft_red>✘</soft_red> Minimale <soft_red>%currency_name%</soft_red> prijs is <soft_red>%amount%</soft_red>!</gray>'
+            Max: '[sound="minecraft:entity.villager.no;0.8;1.0"]<gray><soft_red>✘</soft_red> Maximale <soft_red>%currency_name%</soft_red> prijs is <soft_red>%amount%</soft_red>!</gray>'
+          Negative: '[sound="minecraft:entity.villager.no;0.8;1.0"]<gray><soft_red>✘</soft_red> Ongeldige prijs!</gray>'
+          Material:
+            Min: '[sound="minecraft:entity.villager.no;0.8;1.0"]<gray><soft_red>✘</soft_red> Minimale <soft_red>x1 %item%</soft_red> prijs is <soft_red>%amount%</soft_red>!</gray>'
+            Max: '[sound="minecraft:entity.villager.no;0.8;1.0"]<gray><soft_red>✘</soft_red> Maximale <soft_red>x1 %item%</soft_red> prijs is <soft_red>%amount%</soft_red>!</gray>'
+        DisabledGamemode: '[sound="minecraft:entity.villager.no;0.8;1.0"]<gray><soft_red>✘</soft_red> You can''t add items in your current gamemode!</gray>'
+    Buy:
+      Success:
+        Info:
+        - '[type="title",sound="minecraft:entity.player.levelup;0.8;1.0",title_times="20:60:20"]'
+        - <soft_green><b>Succesvolle aankoop!</b></soft_green>
+        - <gray>Je hebt <soft_green>x%listing_item_amount% %listing_item_name%</soft_green> gekocht van <soft_green>%listing_seller%</soft_green> voor <soft_green>%listing_price%</soft_green>!</gray>
+      Error:
+        NotEnoughFunds:
+        - '[type="title",sound="minecraft:block.anvil.place;0.8;1.0",title_times="20:60:20"]'
+        - <soft_red><b>Onvoldoende geld!</b></soft_red>
+        - <gray>Je hebt <soft_red>%listing_price%</soft_red> nodig. Je hebt <soft_red>%balance%</soft_red>.</gray>
+  Notify:
+    Listing:
+      Claim: <gray><soft_green>✔</soft_green> Je hebt <soft_green>%listing_price%</soft_green> ontvangen voor <soft_green>%listing_item_name%</soft_green>!</gray>
+      Unclaimed:
+      - '[prefix="false"]'
+      - ' '
+      - <soft_yellow><b>Veiling:</b></soft_yellow>
+      - <gray>Je hebt <soft_yellow>%amount%</soft_yellow> onopgeëiste inkomsten van veilingitems!</gray>
+      - ''
+      - <gray>Klik <click:run_command:"/ah unclaimed"><hover:show_text:"<gray>Klik om je inkomsten op te eisen!</gray>"><soft_yellow><b>HIER</b></soft_yellow></hover></click> om nu op te eisen!</gray>
+      - ' '
+      Expired:
+      - '[prefix="false"]'
+      - ' '
+      - <soft_orange><b>Veiling:</b></soft_orange>
+      - <gray>Je hebt <soft_orange>%amount%</soft_orange> verlopen veilingitems!</gray>
+      - ''
+      - <gray>Klik <click:run_command:"/ah expired"><hover:show_text:"<gray>Klik om je items terug te krijgen.</gray>"><soft_orange><b>HIER</b></soft_orange></hover></click> om ze terug te krijgen.</gray>
+      - ' '
+  UI:
+    BuyConfirm:
+      Listing:
+        Name: '%listing_item_name%'
+        Lore:
+        - '%listing_item_lore%'
+        - '%empty-if-above%'
+        - '<gray>Prijs: </gray><soft_yellow>%listing_price%</soft_yellow>'
+        - '<gray>Verkoper: </gray><white>%listing_seller%</white>'
+  Error:
+    DisabledWorld: <gray><soft_red>✘</soft_red> Veiling is uitgeschakeld in deze wereld!</gray>
+ChestShop:
+  Command:
+    Argument:
+      Name:
+        BuyPrice: buyPrijs
+        SellPrice: sellPrijs
+        ShopBlock: blockType
+        ItemName: itemName
+    Browse:
+      Desc: Blader door winkeleigenaren.
+    List:
+      Desc: Blader door je winkels.
+    Search:
+      Desc: Zoek winkels op item.
+    PlayerSearch:
+      Desc: Zoek winkels op speler.
+    Bank:
+      Desc: Open [player's] bank.
+    Create:
+      Desc: Maak een winkel.
+    GiveItem:
+      Desc: Geef winkel creatie item.
+      Done: <gray>Gegeven <soft_yellow>%name%</soft_yellow> aan <soft_yellow>%player_display_name%</soft_yellow>.</gray>
+    Remove:
+      Desc: Verwijder de winkel van de kist waar je naar kijkt.
+    OpenInv:
+      Desc: Open de inventory van de winkel.
+  Shop:
+    Error:
+      NotOwner: <soft_red>Je bent geen eigenaar van deze winkel!</soft_red>
+      Inactive: Deze winkel is momenteel niet beschikbaar.
+    Creation:
+      Info:
+        Done:
+        - '[type="title",sound="minecraft:block.note_block.bell;0.8;1.0",title_times="20:60:20"]'
+        - <soft_green><b>Winkel Gemaakt!</b></soft_green>
+        - <gray><soft_green>Rechtsklik</soft_green> terwijl je sluipt om instellingen te openen.</gray>
+      Error:
+        AlreadyShop: <soft_red>Deze kist is al een shop!</soft_red>
+        NotEmpty: <soft_red>Verwijder eerst alle items uit de kist.</soft_red>
+        NotAChest: <soft_red>Dit blok kan niet worden gebruikt voor winkels!</soft_red>
+        BadLocation: <soft_red>Je kunt hier geen winkel maken!</soft_red>
+        LimitReached: <soft_red>Je hebt het maximum aantal winkels bereikt! Je kunt geen nieuwe maken.</soft_red>
+        BadArea: <soft_red>Je kunt alleen winkels maken binnen je eigen claim!</soft_red>
+        NotEnoughFunds: <soft_red>Je hebt niet genoeg geld!</soft_red>
+    Removal:
+      Error:
+        NotEmpty: <soft_red>Verwijder eerst alle items uit de winkelopslag om deze te verwijderen.</soft_red>
+        NotAShop: <soft_red>Dit blok is geen winkel!</soft_red>
+      Info:
+        Done: '[type="title",sound="minecraft:entity.generic.explode;0.8;1.0",title_times="20:60:20"]<soft_red><b>Winkel Verwijderd!</b></soft_red>'
+    Rename:
+      Error:
+        TooLong: <soft_red>Naam is te lang! Max. lengte is %amount%</soft_red>
+    Teleport:
+      Error:
+        Unsafe: <soft_red>Teleport geannuleerd vanwege onveilige winkel locatie.</soft_red>
+    Trade:
+      Buy:
+        Info:
+          User: '[prefix="false"]<soft_yellow>Je hebt <orange>x%amount% %item%</orange> gekocht voor <orange>%price%</orange> van <orange>%shop_name%</orange> winkel.</soft_yellow>'
+          Owner: '[prefix="false"]<soft_yellow><orange>%player_display_name%</orange> heeft <orange>x%amount% %item%</orange> gekocht voor <orange>%price%</orange> van jouw <orange>%shop_name%</orange> winkel.</soft_yellow>'
+      Sell:
+        Info:
+          User: '[prefix="false"]<soft_yellow>Je hebt <orange>x%amount% %item%</orange> verkocht voor <orange>%price%</orange> aan <orange>%shop_name%</orange> winkel.</soft_yellow>'
+          Owner: '[prefix="false"]<soft_yellow><orange>%player_display_name%</orange> heeft <orange>x%amount% %item%</orange> verkocht voor <orange>%price%</orange> aan jouw <orange>%shop_name%</orange> winkel.</soft_yellow>'
+    Bank:
+      Error:
+        InvalidCurrency:
+        - '[type="title",title_times="20:60:20"]'
+        - <soft_red><b>Operatie Geannuleerd!</b></soft_red>
+        - <gray>Onjuiste valuta!</gray>
+      Deposit:
+        Success: <gray>Je hebt <soft_green>%amount%</soft_green> gestort op de winkelbank!</gray>
+        Error:
+          NotEnough: <gray>Je hebt niet genoeg geld!</gray>
+      Withdraw:
+        Success: <gray>Je hebt <soft_green>%amount%</soft_green> opgenomen van de winkelbank!</gray>
+        NotEnough: <gray>Er is niet genoeg geld in de bank!</gray>
+    InfiniteStorage:
+      Deposit:
+        Success: <gray>Je hebt <soft_green>x%amount% %item%</soft_green> gestort in de winkelopslag!</gray>
+        Error:
+          NotEnough: <gray>Je hebt niet genoeg items!</gray>
+      Withdraw:
+        Success: <gray>Je hebt <soft_green>x%amount% %item%</soft_green> opgenomen uit de winkelopslag!</gray>
+        NotEnough: <gray>Er zijn niet genoeg items in de opslag!</gray>
+  Product:
+    Error:
+      BadItem: <soft_red>Dit item kan niet worden gebruikt in de winkel!</soft_red>
+  Editor:
+    Error:
+      ProductLeft: <soft_red>Je moet dit product volledig uit de kist halen!</soft_red>
+    PriceMenu: <black>Prijsinstellingen</black>
+  Notification:
+    ShopEarnings:
+    - '[prefix="false"]'
+    - ' '
+    - <soft_green><b>Winkelinkomsten:</b></soft_green>
+    - '<gray>Toen je offline was heeft je shop: <soft_green>%amount%</soft_green> opgeleverd.</gray>'
+    - ' '
+  Search:
+    ItemPrompt:
+    - '[type="title",sound="minecraft:block.lava.pop;0.8;1.0",title_times="20:-1:20"]'
+    - <soft_yellow><b>Winkel Zoeken</b></soft_yellow>
+    - <gray>Voer <soft_yellow>item naam</soft_yellow> in om te zoeken.</gray>
+    PlayerPrompt:
+    - '[type="title",sound="minecraft:block.lava.pop;0.8;1.0",title_times="20:-1:20"]'
+    - <soft_yellow><b>Winkel Zoeken</b></soft_yellow>
+    - <gray>Voer <soft_yellow>speler naam</soft_yellow> in om te zoeken.</gray>
+  Rent:
+    Error:
+      AlreadyRented:
+      - '[type="title",sound="minecraft:entity.villager.no;0.8;1.0",title_times="20:60:20"]'
+      - <soft_red><b>Al Gehuurd!</b></soft_red>
+      - <gray>Deze winkel is al door iemand anders gehuurd.</gray>
+      NotRented:
+      - '[type="title",sound="minecraft:entity.villager.no;0.8;1.0",title_times="20:60:20"]'
+      - <soft_red><b>Niet gehuurd!</b></soft_red>
+      - <gray>Je huurt deze winkel niet.</gray>
+      NotRentable:
+      - '[type="title",sound="minecraft:entity.villager.no;0.8;1.0",title_times="20:60:20"]'
+      - <soft_red><b>Niet te huur!</b></soft_red>
+      - <gray>Deze winkel is niet te huur.</gray>
+      InsufficientFunds:
+      - '[type="title",sound="minecraft:entity.villager.no;0.8;1.0",title_times="20:60:20"]'
+      - <soft_red><b>Onvoldoende geld!</b></soft_red>
+      - <gray>Je hebt <soft_red>%price%</soft_red> nodig om deze winkel te huren.</gray>
+    Prompt:
+      Duration: <gray>Vul <green>[Days Amount]</green> in</gray>
+      Price: <gray>Voer <green>[Rent Price]</green> in</gray>
+    Rent:
+      Success:
+      - '[type="title",sound="minecraft:block.iron_door.open;0.8;1.0",title_times="20:60:20"]'
+      - <soft_green><b>Winkel Gehuurd!</b></soft_green>
+      - <gray>Je hebt deze winkel gehuurd voor <soft_green>%time%</soft_green>.</gray>
+    Extend:
+      Success:
+      - '[type="title",sound="minecraft:block.iron_door.open;0.8;1.0",title_times="20:60:20"]'
+      - <soft_green><b>Huur Verlengd!</b></soft_green>
+      - <gray>Je hebt de huur van de winkel verlengd voor <soft_green>%time%</soft_green>.</gray>
+    Cancel:
+      ByRenter:
+      - '[type="title",sound="minecraft:entity.zombie.break_wooden_door;0.8;1.0",title_times="20:60:20"]'
+      - <soft_green><b>Huur Geannuleerd!</b></soft_green>
+      - <gray>Je huurt de <soft_green>%shop_name%</soft_green> winkel niet meer.</gray>
+      ByOwner:
+      - '[type="title",sound="minecraft:entity.zombie.break_wooden_door;0.8;1.0",title_times="20:60:20"]'
+      - <soft_green><b>Huur Geannuleerd!</b></soft_green>
+      - <gray><soft_green>%shop_rented_by%</soft_green> huurt de <soft_green>%shop_name%</soft_green> winkel niet meer.</gray>
+Error:
+  Command:
+    Argument:
+      InvalidShopBlock: <gray><soft_red>%input%</soft_red> is geen geldig winkelblok!</gray>
+VirtualShop:
+  Command:
+    Argument:
+      Name:
+        Shop: shop
+    Editor:
+      Desc: Open VirtualShop editor.
+    Rotate:
+      Desc: Force rotate a shop.
+      Done: <gray>Force rotated <soft_yellow>%shop_name%</soft_yellow> shop</gray>
+    Open:
+      Desc: Opens specified shop.
+      Done:
+        Others: <gray>Opened <soft_yellow>%shop_name%</soft_yellow> shop for <soft_yellow>%player_name%</soft_yellow>.</gray>
+    Menu:
+      Desc: Opens Main Menu.
+      Done:
+        Others: <gray>Opened shops menu for <soft_yellow>%player_name%</soft_yellow>.</gray>
+    Shop:
+      Desc: Open specified shop or main menu.
+    ShopAlias:
+      Desc: Open %shop_name% shop.
+    SellMenu:
+      Desc: Open Sell GUI.
+      Done:
+        Others: <gray>Opened sell menu for <soft_yellow>%player_name%</soft_yellow>.</gray>
+    SellAll:
+      Desc: Quickly sell all items in inventory.
+      Done:
+        Others: <gray>Forced player <soft_yellow>%player_name%</soft_yellow> to sell all items.</gray>
+    SellHand:
+      Desc: Quickly sell hand item.
+      Done:
+        Others: <gray>Forced player <soft_yellow>%player_name%</soft_yellow> to sell hand item.</gray>
+    SellHandAll:
+      Desc: Quickly sell similar hand items.
+    Syntax:
+      InvalidShop: <gray><soft_red>%input%</soft_red> is not a valid shop!</gray>
+  Shop:
+    Rotation:
+      Update:
+      - '[prefix="false"]'
+      - ' '
+      - '<gray>Er zijn nieuwe items in de shop: <soft_yellow>%shop_name%</soft_yellow> verschenen!</gray>'
+      - <gray>Klik <click:run_command:"/shop %shop_id%"><hover:show_text:"<gray>Klik om de winkel te openen!</gray>"><soft_yellow><b>HIER</b></soft_yellow></hover></click> om de winkel te openen!</gray>
+      - ' '
+    Error:
+      BadWorld: <soft_red>Je kunt geen winkel in deze wereld gebruiken!</soft_red>
+      BadGamemode: <soft_red>Je kunt geen winkel in de huidige gamemode gebruiken!</soft_red>
+      InvalidLayout: '<gray>Kon de winkel <soft_red>%shop_name%</soft_red> niet openen: Ongeldige winkelindeling!</gray>'
+    Create:
+      Error:
+        Exist: <soft_red>Er bestaat al een winkel met deze naam!</soft_red>
+        BadName: <soft_red>Alleen Latijnse letters en cijfers zijn toegestaan!</soft_red>
+  Product:
+    Purchase:
+      Sell:
+      - '[type="title",sound="minecraft:entity.experience_orb.pickup;0.8;1.0",title_times="20:60:20"]'
+      - <soft_green><b>Succesvolle Verkoop!</b></soft_green>
+      - <gray>Je hebt <soft_green>x%amount% %item%</soft_green> verkocht voor <soft_green>%price%</soft_green></gray>
+      Buy:
+      - '[type="title",sound="minecraft:entity.experience_orb.pickup;0.8;1.0",title_times="20:60:20"]'
+      - <soft_green><b>Succesvolle Aankoop!</b></soft_green>
+      - <gray>Je hebt <soft_green>x%amount% %item%</soft_green> gekocht voor <soft_green>%price%</soft_green></gray>
+  SellMenu:
+    NothingResult:
+    - '[type="title",sound="minecraft:block.anvil.place;0.8;1.0",title_times="20:60:20"]'
+    - <soft_red><b>Niets om te verkopen!</b></soft_red>
+    - <gray>Je hebt geen items om te verkopen.</gray>
+    NothingDetails:
+    - '[prefix="false"]'
+    - ' '
+    - <soft_red><b>Verkoopdetails:</b></soft_red>
+    - <gray>Er zijn geen items in je inventory die verkocht kunnen worden.</gray>
+    - ' '
+    - <gray>Als je gestapelde Shulker Boxes of Kisten met items erin hebt,</gray>
+    - <gray>split ze dan in enkele stapels om te verkopen.</gray>
+    - ' '
+    SaleResult:
+    - '[type="title",sound="minecraft:entity.experience_orb.pickup;0.8;1.0",title_times="20:60:20"]'
+    - <soft_green><b>Items Verkocht!</b></soft_green>
+    - <gray>+%total%</gray>
+    SaleDetails:
+    - '[prefix="false"]'
+    - ' '
+    - <soft_green><b>Verkoopdetails:</b></soft_green>
+    - '%entry%'
+    - ' '
+    - '<gray>Totaal: <soft_green>%total%</soft_green></gray>'
+    - ' '
+    SaleEntry: '<gray>x%amount% <white>%item%</white>: <soft_green>%price%</soft_green> <dark_gray>(<white>%shop_name%</white>)</dark_gray></gray>'
+  Price:
+    AverageDynamics:
+      Up: <green>↑ %value%%</green>
+      Down: <red>↓ %value%%</red>
+  Error:
+    Editor:
+      RotationExists: <soft_red>Rotatie met die naam bestaat al!</soft_red>
+  Dialog:
+    Generic:
+      Button:
+        Apply:
+          Label: <green>✔</green> <white>Toepassen</white>
+          Width: 150
+        Reset:
+          Label: <red>✘</red> <white>Resetten</white>
+          Width: 150
+        Back:
+          Label: <soft_yellow>←</soft_yellow> <white>Terug</white>
+          Width: 150
+    ShopCreation:
+      Title: <soft_aqua><b><soft_aqua><b>SHOP EDITOR</b></soft_aqua><dark_gray> » </dark_gray>Shop Creation</b></soft_aqua>
+      Body:
+        Contents:
+        - Voorzie een <soft_yellow>interne naam</soft_yellow> voor een nieuwe winkel.
+        - Deze naam is niet zichtbaar voor spelers en <soft_yellow>moet uniek zijn</soft_yellow> voor elke winkel.
+        - ''
+        - '<green>✔</green> Geldige invoer: <green>letters <gray>(abc)</gray></green>, <green>cijfers <gray>(winkel123)</gray></green>, <green>underscore <gray>(mijn_winkel)</gray></green>'
+        - ''
+        - "<soft_red>✘</soft_red> Ongeldige invoer: <soft_red>spaties <gray>(mijn winkel)</gray></soft_red>, <soft_red>kleuren <gray>(MijnWinkel)</gray></soft_red>, <soft_red>emoji's <gray>(♥mijn_winkel♥)</gray></soft_red>"
+        - ''
+        - <soft_yellow>→</soft_yellow> Shop files worden aangemaakt in de <soft_yellow>%path%</soft_yellow> map.
+        Width: 400
+      Input:
+        ShopId:
+          Contents: Shop ID
+          Width: 200
+      Button:
+        Create:
+          Label: <soft_yellow>Aanmaken!</soft_yellow>
+          Width: 150
+    ShopName:
+      Title: <soft_aqua><b>SHOP EDITOR</b></soft_aqua><dark_gray> » </dark_gray>Shop Name
+      Body:
+        Contents:
+        - Stelt aangepaste winkelweergavenaam in.
+        - ''
+        - Voel je vrij om de <soft_yellow>%shop_name%</soft_yellow> placeholder te gebruiken in configuratiebestanden om de winkelnaam in GU's en berichten "in te voegen".
+        Width: 250
+      Input:
+        ShopName:
+          Contents: Name
+          Width: 200
+    ShopDescription:
+      Title: <soft_aqua><b>SHOP EDITOR</b></soft_aqua><dark_gray> » </dark_gray>Shop Description
+      Body:
+        Contents:
+        - Stelt aangepaste winkelbeschrijving in.
+        - ''
+        - Voel je vrij om de <soft_yellow>%shop_description%</soft_yellow> placeholder te gebruiken in configuratiebestanden om de winkelbeschrijving in GU's en berichten "in te voegen".
+        Width: 300
+      Input:
+        Text:
+          Contents: Description
+          Width: 200
+    ShopAliases:
+      Title: <soft_aqua><b>SHOP EDITOR</b></soft_aqua><dark_gray> » </dark_gray>Shop Aliases
+      Body:
+        Contents:
+        - Hier kun je aangepaste aliassen voor de winkel toevoegen.
+        - Deze aliassen worden geregistreerd als <soft_yellow>servercommando's</soft_yellow>, en het uitvoeren van een van hen opent deze winkel.
+        - ''
+        - <soft_orange>⚠</soft_orange> Spelers moeten de <soft_orange>%permission%</soft_orange> permissie hebben om toegang te krijgen tot deze commando's.
+        - ''
+        - <soft_red>→</soft_red> Voer <soft_red>één</soft_red> alias <soft_red>per regel</soft_red> in.
+        Width: 400
+      Input:
+        Text:
+          Contents: Aliases
+          Width: 200
+        Reload: Reload commands
+    ShopSlots:
+      Title: <soft_aqua><b>SHOP EDITOR</b></soft_aqua><dark_gray> » </dark_gray>Menu Slots
+      Body:
+        Contents:
+        - Stelt winkelslots in voor de <soft_yellow>Centrale Winkel GUI</soft_yellow>.
+        - ''
+        - Je kunt <soft_yellow>meerdere slots</soft_yellow> toewijzen voor dezelfde winkel <gray>(handig voor GU's met aangepaste texturen)</gray>
+        - ''
+        - <green>✔ Green</green> = huidige winkelslot(s).
+        - <red>✘ Red</red> = bezet door andere winkel(s).
+        Width: 300
+    ShopPages:
+      Title: <soft_aqua><b>SHOP EDITOR</b></soft_aqua><dark_gray> » </dark_gray>Pages Amount
+      Body:
+        Contents:
+        - Bepaalt hoeveel pagina's de winkel zal hebben.
+        - ''
+        - <soft_red>→</soft_red>Zorg ervoor dat het configuratiebestand <soft_red>Shop Layout(s)</soft_red> <soft_red>page buttons</soft_red> bevat!
+        Width: 400
+      Input:
+        Pages:
+          Contents: Pages
+          Width: 200
+    ShopLayouts:
+      Title: <soft_aqua><b>SHOP EDITOR</b></soft_aqua><dark_gray> » </dark_gray>Page Layouts
+      Body:
+        Contents:
+        - Layouts bepalen het uiterlijk van de winkel-GUI.
+        - ''
+        - Je kunt je eigen layouts aanpassen en maken in de <soft_yellow>%path%</soft_yellow> directory.
+        - ''
+        - In <gold>Global</gold> modus kun je één layout instellen voor de hele winkel.
+        - ''
+        - In <blue>Paginated</blue> modus kun je een aparte layout instellen voor elke winkelpagina.
+        Width: 400
+      Input:
+        Page: '<soft_yellow>Page #%page%</soft_yellow>'
+        Default: <soft_yellow>Global Layout</soft_yellow>
+      Button:
+        ModeGlobal:
+          Label: <soft_yellow>→</soft_yellow> Schakel over naar <soft_yellow>Global</soft_yellow> modus
+          Width: 150
+        ModePaginated:
+          Label: <soft_yellow>→</soft_yellow> Schakel over naar <soft_yellow>Paginated</soft_yellow> modus
+          Width: 150
+    ProductPrice:
+      Title: <soft_aqua><b>SHOP EDITOR</b></soft_aqua><dark_gray> » </dark_gray>Product Price
+      Body:
+        Flat:
+          Contents: Vaste prijzen stellen je in staat om een <soft_yellow>vaste</soft_yellow> prijs voor een item in te stellen, zonder voorwaarden die deze automatisch zouden wijzigen.
+          Width: 400
+        Float:
+          Contents:
+          - Zwevende prijzen stellen je in staat om een <soft_yellow>automatisch</soft_yellow> gegenereerde prijs voor een item binnen bepaalde grenzen in te stellen.
+          - De prijs kan veranderen op <soft_yellow>specifieke uren</soft_yellow> of op een ingesteld <soft_yellow>interval</soft_yellow>.
+          - ''
+          - <soft_yellow>→</soft_yellow> De min. en max. waarden voor koop- en verkoopprijzen worden ingesteld in de onderstaande velden.
+          - ''
+          - <soft_yellow>→</soft_yellow> De tijd voor automatische prijsupdates wordt ingesteld met de knop <soft_yellow>Ververs tijden</soft_yellow>.
+          Width: 400
+        Dynamic:
+          Contents:
+          - Dynamische prijzen stellen je in staat om de prijs van een item <soft_yellow>automatisch</soft_yellow> te laten veranderen met een bepaald percentage bij <soft_yellow>elke</soft_yellow> aankoop of verkoop, tot bepaalde limieten.
+          - ''
+          - <soft_yellow>→</soft_yellow> De beginprijs wordt ingesteld in het veld <soft_yellow>Beginprijs</soft_yellow>.
+          - ''
+          - <soft_yellow>→</soft_yellow> De procentuele aanpassing die wordt toegepast bij kopen en verkopen wordt respectievelijk ingesteld in de velden <soft_yellow>Aanpassing bij kopen</soft_yellow> en <soft_yellow>Aanpassing bij verkopen</soft_yellow>.
+          - ''
+          - <soft_yellow>→</soft_yellow> De onder- en bovengrenzen van de aanpassing worden ingesteld in de velden <soft_yellow>Minimale aanpassing</soft_yellow> en <soft_yellow>Maximale aanpassing</soft_yellow>.
+          Width: 400
+        Players:
+          Contents:
+          - Online-based pricing staat prijsveranderingen <soft_yellow>automatisch</soft_yellow> toe met een bepaald percentage op basis van het aantal <soft_yellow>online spelers</soft_yellow>.
+          - ''
+          - <soft_yellow>→</soft_yellow> De beginprijs wordt ingesteld in het veld <soft_yellow>Beginprijs</soft_yellow>.
+          - ''
+          - <soft_yellow>→</soft_yellow> De procentuele aanpassing per online speler wordt ingesteld in het veld <soft_yellow>Aanpassing per speler</soft_yellow>.
+          - ''
+          - <soft_yellow>→</soft_yellow> De onder- en bovengrenzen van de aanpassing worden ingesteld in de velden <soft_yellow>Minimale aanpassing</soft_yellow> en <soft_yellow>Maximale aanpassing</soft_yellow>.
+          Width: 400
+      Button:
+        Pricing:
+          Label: '<soft_yellow>→</soft_yellow> Prijzen: <soft_yellow>%type%</soft_yellow>'
+          Tooltip: <red>De prijs veranderen zorgt ervoor dat de prijsgegevens van het item worden gereset!</red>
+          Width: 150
+        Currency:
+          Label: '<soft_yellow>→</soft_yellow> Valuta: <soft_yellow>%currency_name%</soft_yellow>'
+          Width: 150
+      Float:
+        Button:
+          Times:
+            Label: <soft_yellow>⌛</soft_yellow> Ververs tijden
+            Width: 150
+        Input:
+          BuyMin:
+            Contents: <soft_green>[$]</soft_green> Koopprijs <gray>(Min)</gray>
+            Width: 200
+          BuyMax:
+            Contents: <soft_green>[$]</soft_green> Koopprijs <gray>(Max)</gray>
+            Width: 200
+          SellMin:
+            Contents: <soft_red>[$]</soft_red> Verkoopprijs <gray>(Min)</gray>
+            Width: 200
+          SellMax:
+            Contents: <soft_red>[$]</soft_red> Verkoopprijs <gray>(Max)</gray>
+            Width: 200
+          Rounding: Rond prijzen af
+      Flat:
+        Input:
+          Buy:
+            Contents: <soft_green>[$]</soft_green> Koopprijs
+            Width: 200
+          Sell:
+            Contents: <soft_red>[$]</soft_red> Verkoopprijs
+            Width: 200
+      Dynamic:
+        Input:
+          Buy:
+            Start:
+              Contents: '<soft_green>[$] Koopprijs: </soft_green>Beginwaarde'
+              Width: 200
+            BuyOffset:
+              Contents: '<soft_green>[$] Koopprijs: </soft_green>Aanpassing bij kopen <gray>(in %)</gray>'
+              Width: 200
+            SellOffset:
+              Contents: '<soft_green>[$] Koopprijs: </soft_green>Aanpassing bij verkopen <gray>(in %)</gray>'
+              Width: 200
+            MinOffset:
+              Contents: '<soft_green>[$] Koopprijs: </soft_green>Min. Aanpassing <gray>(in %)</gray>'
+              Width: 200
+            MaxOffset:
+              Contents: '<soft_green>[$] Koopprijs: </soft_green>Max. Aanpassing <gray>(in %)</gray>'
+              Width: 200
+          Sell:
+            Start:
+              Contents: '<soft_red>[$] Verkoopprijs: </soft_red>Beginwaarde'
+              Width: 200
+            BuyOffset:
+              Contents: '<soft_red>[$] Verkoopprijs: </soft_red>Aanpassing bij kopen <gray>(in %)</gray>'
+              Width: 200
+            SellOffset:
+              Contents: '<soft_red>[$] Verkoopprijs: </soft_red>Aanpassing bij verkopen <gray>(in %)</gray>'
+              Width: 200
+            MinOffset:
+              Contents: '<soft_red>[$] Verkoopprijs: </soft_red>Min. Aanpassing <gray>(in %)</gray>'
+              Width: 200
+            MaxOffset:
+              Contents: '<soft_red>[$] Verkoopprijs: </soft_red>Max. Aanpassing <gray>(in %)</gray>'
+              Width: 200
+          Stabilize:
+            Interval:
+              Contents: '<soft_yellow>[⌛] Stabilisatie: </soft_yellow>Interval <gray>(in seconden)</gray>'
+              Width: 200
+            Amount:
+              Contents: '<soft_yellow>[⌛] Stabilisatie: </soft_yellow>Hoeveelheid <gray>(in %)</gray>'
+              Width: 200
+      Players:
+        Input:
+          Buy:
+            Offset:
+              Contents: '<soft_green>[$] Koopprijs: </soft_green>Per speler aanpassing'
+              Width: 200
+          Sell:
+            Offset:
+              Contents: '<soft_red>[$] Verkoopprijs: </soft_red>Per speler aanpassing'
+              Width: 200
+      FloatTimes:
+        Title: <soft_aqua><b>SHOP EDITOR</b></soft_aqua><dark_gray> » </dark_gray>Float Prijsinstellingen Tijden.
+        Body:
+          Interval:
+            Contents:
+            - In <soft_yellow>Interval</soft_yellow> modus, worden de prijzen van het item bijgewerkt op vaste <soft_yellow>intervallen</soft_yellow>.
+            - ''
+            - <soft_yellow>→</soft_yellow> Om het interval in te stellen, voert u de gewenste waarde in het onderstaande veld in.
+            Width: 400
+          Scheduled:
+            Contents:
+            - In <soft_yellow>Scheduled</soft_yellow> modus, wordt de prijs van het item strikt bijgewerkt op de opgegeven <soft_yellow>uren</soft_yellow> op geselecteerde <soft_yellow>dagen</soft_yellow> van de week.
+            - ''
+            - <soft_yellow>→</soft_yellow> Om de <soft_yellow>uren</soft_yellow> in te stellen, voert u de gewenste tijden in het veld <soft_yellow>Tijden</soft_yellow> in <gray>(één tijd per regel)</gray>.
+            - ''
+            - <soft_yellow>→</soft_yellow> Om de <soft_yellow>dagen</soft_yellow> te kiezen, klikt u op de weekdagknoppen. De geselecteerde dagen worden gemarkeerd in <green>groen</green>.
+            Width: 400
+        Input:
+          Interval:
+            Contents: Interval <soft_yellow>(in seconden)</soft_yellow>
+            Width: 120
+          Times:
+            Contents: Tijden <soft_yellow>(in 24-uurs HH:MM formaat)</soft_yellow>
+            Width: 150
+        Button:
+          DayActive:
+            Label: <green>[X]</green> %name%
+            Width: 100
+          DayInactive:
+            Label: <gray>[ ] %name%</gray>
+            Width: 100
+          ModeInterval:
+            Label: <soft_yellow>→</soft_yellow> Schakel over naar <soft_yellow>Interval</soft_yellow> modus
+            Width: 150
+          ModeScheduled:
+            Label: <soft_yellow>→</soft_yellow> Schakel over naar <soft_yellow>Scheduled</soft_yellow> modus
+            Width: 150
+    ProductCurrency:
+      Title: <soft_aqua><b>SHOP EDITOR</b></soft_aqua><dark_gray> » </dark_gray>Item Valuta
+    ProductCommands:
+      Title: <soft_aqua><b>SHOP EDITOR</b></soft_aqua><dark_gray> » </dark_gray>Product Commands
+      Body:
+        Contents:
+        - Voer de commando's in die worden uitgevoerd wanneer een speler dit item koopt.
+        - <soft_red>(één commando per regel)</soft_red>
+        - ''
+        - <soft_yellow><b>PLACEHOLDERS:</b></soft_yellow>
+        - <soft_yellow>→</soft_yellow> De <soft_yellow>%amount%</soft_yellow> placeholder voor de <soft_yellow>geselecteerde hoeveelheid</soft_yellow>.
+        - <soft_yellow>→</soft_yellow> De <soft_yellow>%player_name%</soft_yellow> placeholder voor de <soft_yellow>spelernaam</soft_yellow>.
+        - ''
+        - <green>✔</green> Interne <green>Shop</green> en <green>Product</green> placeholders zijn beschikbaar.
+        - <green>✔</green> Externe <green>PlaceholderAPI</green> placeholders zijn beschikbaar.
+        Width: 400
+      Input:
+        Text:
+          Contents: Commands
+          Width: 300
+  Editor:
+    Product:
+      NoRankRequirements: Geen rang(en) vereist!
+      NoPermissionRequirements: Geen permissie(s) vereist!
+      NoForbiddenPerms: Geen permissie(s) verboden!
+      Commands:
+        Name: <soft_yellow><b>Commands</b></soft_yellow>
+        Lore:
+        - '%product_commands%'
+        - ' '
+        - <gray>Commando's die worden uitgevoerd wanneer een speler dit item koopt.</gray>
+        - ' '
+        - <soft_yellow>→ <u>Klik om te editen.</u></soft_yellow>
+    Enter:
+      Id: <gray>Enter <green>[Shop Identifier]</green></gray>
+      Description: <gray>Enter <green>[Description]</green></gray>
+      Command: <gray>Enter <green>[Command]</green></gray>
+      Alias: <gray>Enter <green>[Command Alias]</green></gray>
+      Rank: <gray>Enter <green>[Rank Name]</green></gray>
+      Permission: <gray>Enter <green>[Permission Node]</green></gray>
+      RotationId: <gray>Enter <green>[Rotation Name]</green></gray>
+      Weight: <gray>Enter <green>[Weight]</green></gray>
+    Icon:
+      AddShop:
+        Name: <green><b>Add Shop</b></green>
+        Lore:
+        - <gray>Maak een nieuwe GUI winkel.</gray>
+        - ' '
+        - <green>→ <u>Klik om te maken</u></green>
+      Shop:
+        Name: <soft_yellow><b>%shop_name%</b></soft_yellow>
+        Lore:
+        - '<gray><dark_gray>» </dark_gray>ID: <white>%shop_id%</white></gray>'
+        - '<gray><dark_gray>» </dark_gray>Items: <white>%shop_products%</white></gray>'
+        - '<gray><dark_gray>» </dark_gray>Pages: <white>%shop_pages%</white></gray>'
+        - ' '
+        - <soft_yellow>→ <u>Klik om te editen.</u></soft_yellow>
+      ShopName:
+        Name: <soft_yellow><b>Naam</b></soft_yellow>
+        Lore:
+        - '<gray><dark_gray>» </dark_gray>Huidig: <white>%shop_name%</white></gray>'
+        - ' '
+        - <soft_yellow>→ <u>Klik om te veranderen</u></soft_yellow>
+      ShopDescription:
+        Name: <soft_yellow><b>Beschrijving</b></soft_yellow>
+        Lore:
+        - <gray>%shop_description%</gray>
+        - ' '
+        - <soft_yellow>→ <u>Klik om te veranderen</u></soft_yellow>
+      ShopIcon:
+        Name: <soft_yellow><b>Icoon</b></soft_yellow>
+        Lore:
+        - <gray>Gewoon een winkel icoon.</gray>
+        - ' '
+        - <soft_yellow>→ <u>Klik op het item in de inventory om in te stellen</u></soft_yellow>
+      ShopAliases:
+        Name: <soft_yellow><b>Aliassen</b></soft_yellow>
+        Lore:
+        - <gray>%shop_aliases%</gray>
+        - ' '
+        - <gray>Voeg aangepaste aliassen toe voor de winkel.</gray>
+        - ' '
+        - <gray>Elke alias wordt een servercommando</gray>
+        - <gray>dat deze winkel opent.</gray>
+        - ' '
+        - <soft_yellow>→ <u>Klik om te veranderen</u></soft_yellow>
+      ShopSlots:
+        Name: <soft_yellow><b>Menu Slots</b></soft_yellow>
+        Lore:
+        - '<gray><dark_gray>» </dark_gray>Huidig: <white>%shop_menu_slot%</white></gray>'
+        - ' '
+        - <soft_yellow>→ <u>Klik om te veranderen</u></soft_yellow>
+      ShopPages:
+        Name: <soft_yellow><b>Aantal Pagina's</b></soft_yellow>
+        Lore:
+        - '<gray><dark_gray>» </dark_gray>Huidig: <white>%shop_pages%</white></gray>'
+        - ' '
+        - <soft_yellow>→ <u>Klik om aan te passen.</u></soft_yellow>

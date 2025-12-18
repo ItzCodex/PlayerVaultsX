@@ -64,12 +64,12 @@ public class VaultManager {
      * Saves the inventory to the specified player and vault number.
      *
      * @param inventory The inventory to be saved.
-     * @param target The player of whose file to save to.
-     * @param number The vault number.
+     * @param target    The player of whose file to save to.
+     * @param number    The vault number.
      */
     public void saveVault(Inventory inventory, String target, int number) {
         YamlConfiguration yaml = getPlayerVaultFile(target, true);
-        int size = VaultOperations.getMaxVaultSize(target);
+//        int size = VaultOperations.getMaxVaultSize(target);
         String serialized = CardboardBoxSerialization.toStorage(inventory, target);
         yaml.set(String.format(VAULTKEY, number), serialized);
         saveFileSync(target, yaml);
@@ -110,7 +110,7 @@ public class VaultManager {
     /**
      * Load the player's vault and return it.
      *
-     * @param name The holder of the vault.
+     * @param name   The holder of the vault.
      * @param number The vault number.
      */
     public Inventory loadOtherVault(String name, int number, int size) {
@@ -154,8 +154,8 @@ public class VaultManager {
      * Get an inventory from file. Returns null if the inventory doesn't exist. SHOULD ONLY BE USED INTERNALLY
      *
      * @param playerFile the YamlConfiguration file.
-     * @param size the size of the vault.
-     * @param number the vault number.
+     * @param size       the size of the vault.
+     * @param number     the vault number.
      * @return inventory if exists, otherwise null.
      */
     private Inventory getInventory(InventoryHolder owner, String ownerName, YamlConfiguration playerFile, int size, int number, String title) {
@@ -172,7 +172,7 @@ public class VaultManager {
         // Happens on change of permission or if people used the broken version.
         // In this case, players will lose items.
         if (deserialized.length > size) {
-            PlayerVaults.debug("Loaded vault for " + ownerName + " and got " + deserialized.length + " items for allowed size of " + size+". Attempting to rescue!");
+            PlayerVaults.debug("Loaded vault for " + ownerName + " and got " + deserialized.length + " items for allowed size of " + size + ". Attempting to rescue!");
             for (ItemStack stack : deserialized) {
                 if (stack != null) {
                     inventory.addItem(stack);

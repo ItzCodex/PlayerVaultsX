@@ -70,62 +70,62 @@ public class VaultOperations {
         }
     }
 
-    /**
-     * Check whether or not the player has permission to open the requested vault.
-     *
-     * @param sender The person to check.
-     * @param number The vault number.
-     * @return Whether or not they have permission.
-     */
-    public static boolean checkPerms(CommandSender sender, int number) {
-        for (int x = number; x <= PlayerVaults.getInstance().getMaxVaultAmountPermTest(); x++) {
-            if (sender.hasPermission(Permission.amount(x))) {
-                return true;
-            }
-        }
-        return false;
-    }
+//    /**
+//     * Check whether or not the player has permission to open the requested vault.
+//     *
+//     * @param sender The person to check.
+//     * @param number The vault number.
+//     * @return Whether or not they have permission.
+//     */
+//    public static boolean checkPerms(CommandSender sender, int number) {
+//        for (int x = number; x <= PlayerVaults.getInstance().getMaxVaultAmountPermTest(); x++) {
+//            if (sender.hasPermission(Permission.amount(x))) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
-    /**
-     * Get the max size vault a player is allowed to have.
-     *
-     * @param name that is having his permissions checked.
-     * @return max size as integer. If no max size is set then it will default to the configured default.
-     */
-    public static int getMaxVaultSize(String name) {
-        try {
-            UUID uuid = UUID.fromString(name);
-            return getMaxVaultSize(Bukkit.getOfflinePlayer(uuid));
-        } catch (Exception e) {
-            // Not a UUID
-        }
+//    /**
+//     * Get the max size vault a player is allowed to have.
+//     *
+//     * @param name that is having his permissions checked.
+//     * @return max size as integer. If no max size is set then it will default to the configured default.
+//     */
+//    public static int getMaxVaultSize(String name) {
+//        try {
+//            UUID uuid = UUID.fromString(name);
+//            return getMaxVaultSize(Bukkit.getOfflinePlayer(uuid));
+//        } catch (Exception e) {
+//            // Not a UUID
+//        }
+//
+//        return PlayerVaults.getInstance().getDefaultVaultSize();
+//    }
 
-        return PlayerVaults.getInstance().getDefaultVaultSize();
-    }
-
-    /**
-     * Get the max size vault a player is allowed to have.
-     *
-     * @param player that is having his permissions checked.
-     * @return max size as integer. If no max size is set then it will default to the configured default.
-     */
-    public static int getMaxVaultSize(OfflinePlayer player) {
-        if (player == null || !player.isOnline()) {
-            return 6 * 9;
-        }
-        for (int i = 6; i != 0; i--) {
-            if (player.getPlayer().hasPermission(Permission.size(i))) {
-                return i * 9;
-            }
-        }
-        return PlayerVaults.getInstance().getDefaultVaultSize();
-    }
+//    /**
+//     * Get the max size vault a player is allowed to have.
+//     *
+//     * @param player that is having his permissions checked.
+//     * @return max size as integer. If no max size is set then it will default to the configured default.
+//     */
+//    public static int getMaxVaultSize(OfflinePlayer player) {
+//        if (player == null || !player.isOnline()) {
+//            return 6 * 9;
+//        }
+//        for (int i = 6; i != 0; i--) {
+//            if (player.getPlayer().hasPermission(Permission.size(i))) {
+//                return i * 9;
+//            }
+//        }
+//        return PlayerVaults.getInstance().getDefaultVaultSize();
+//    }
 
     /**
      * Open a player's own vault.
      *
      * @param player The player to open to.
-     * @param arg The vault number to open.
+     * @param arg    The vault number to open.
      * @return Whether or not the player was allowed to open it.
      */
     public static boolean openOwnVault(Player player, String arg) {
@@ -154,9 +154,12 @@ public class VaultOperations {
             return false;
         }
 
-        if (checkPerms(player, number)) {
+        int unlockedRows = HarmVaults.getRows(player);
+        Integer menuSize = HarmVaults.getRowsForMenu(unlockedRows, number);
+
+        if (menuSize != null) {
             if (free || EconomyOperations.payToOpen(player, number)) {
-                Inventory inv = VaultManager.getInstance().loadOwnVault(player, number, getMaxVaultSize(player));
+                Inventory inv = VaultManager.getInstance().loadOwnVault(player, number, menuSize * 9);
                 if (inv == null) {
                     PlayerVaults.debug(String.format("Failed to open null vault %d for %s. This is weird.", number, player.getName()));
                     return false;
@@ -190,8 +193,8 @@ public class VaultOperations {
     /**
      * Open a player's own vault. If player is using a command, they'll need the required permission.
      *
-     * @param player The player to open to.
-     * @param arg The vault number to open.
+     * @param player    The player to open to.
+     * @param arg       The vault number to open.
      * @param isCommand - if player is opening via a command or not.
      * @return Whether or not the player was allowed to open it.
      */
@@ -206,9 +209,9 @@ public class VaultOperations {
     /**
      * Open another player's vault.
      *
-     * @param player The player to open to.
+     * @param player     The player to open to.
      * @param vaultOwner The name of the vault owner.
-     * @param arg The vault number to open.
+     * @param arg        The vault number to open.
      * @return Whether or not the player was allowed to open it.
      */
     public static boolean openOtherVault(Player player, String vaultOwner, String arg) {
@@ -237,7 +240,21 @@ public class VaultOperations {
             PlayerVaults.getInstance().getTL().mustBeNumber().title().send(player);
         }
 
-        Inventory inv = VaultManager.getInstance().loadOtherVault(vaultOwner, number, getMaxVaultSize(vaultOwner));
+        Integer size = PlayerVaults.getInstance().getDefaultVaultSize();
+        try {
+            UUID uuid = UUID.fromString(vaultOwner);
+            OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(uuid);
+            UUID playerUuid = offlinePlayer.getUniqueId();
+
+            int rows = HarmVaults.getRows(playerUuid);
+            size = HarmVaults.getRowsForMenu(rows, number);
+        } catch (Exception e) {
+            // not a player
+        }
+
+        if (size == null) size = PlayerVaults.getInstance().getDefaultVaultRows();
+
+        Inventory inv = VaultManager.getInstance().loadOtherVault(vaultOwner, number, size * 9);
         String name = vaultOwner;
         try {
             OfflinePlayer offlinePlayer = Bukkit.getOfflinePlayer(UUID.fromString(vaultOwner));
@@ -276,7 +293,7 @@ public class VaultOperations {
      * Delete a player's own vault.
      *
      * @param player The player to delete.
-     * @param arg The vault number to delete.
+     * @param arg    The vault number to delete.
      */
     public static void deleteOwnVault(Player player, String arg) {
         if (isLocked()) {
@@ -309,7 +326,7 @@ public class VaultOperations {
      *
      * @param sender The sender executing the deletion.
      * @param holder The user to whom the deleted vault belongs.
-     * @param arg The vault number to delete.
+     * @param arg    The vault number to delete.
      */
     public static void deleteOtherVault(CommandSender sender, String holder, String arg) {
         if (isLocked()) {
